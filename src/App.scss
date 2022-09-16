@@ -1,0 +1,281 @@
+$squareSize: 35px;
+$squareMargin: 1px;
+
+$lightSize: 70px;
+
+*{
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Press Start 2P', cursive;
+    background-image: linear-gradient( 135deg, #FFCF71 10%, #2376DD 100%);
+    height: 100vh;
+    border: 20px solid rgb(79, 79, 107);
+}
+
+@keyframes openGame {
+  from{
+    transform: translateY(-1000px);
+  } to {
+    transform: translateY(0px);
+  }
+}
+
+
+
+
+.Game {
+    display: flex;
+    justify-content: space-around;
+    width: 700px;
+    border: 2px solid black;
+    background: white;
+    -webkit-box-shadow: 13px 9px 0px 4px rgba(0, 0, 0, 1);
+-moz-box-shadow: 13px 9px 0px 4px rgba(0, 0, 0, 1);
+box-shadow: 13px 9px 0px 4px rgba(0, 0, 0, 1);
+
+animation: openGame 1s ease;
+}
+
+@keyframes showBack {
+  from {
+    transform: translateX(-200px);
+  } to {
+    transform: translateX(0px);
+  }
+}
+
+.back {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  animation: showBack 1s ease;
+}
+.Square {
+    height: $squareSize;
+    width: $squareSize;
+    margin: calc($squareMargin/2);
+    border: 2px solid rgb(97, 58, 58);
+  }
+
+  .PreviewSquare {
+    border: none;
+  }
+  
+  .BoardSquares {
+    box-sizing: content-box;
+    width: calc($squareSize * 11);
+    margin: 10px;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+
+    border: 2px solid rgb(97, 58, 58);
+    // border-radius: 20px;
+  }
+
+  .PreviewSquares {
+    box-sizing: content-box;
+    width: calc($squareSize * 4.5);
+    margin: 3px;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+
+    border: 2px solid rgb(97, 58, 58);
+    // border-radius: 20px;
+  }
+
+
+  .InfoBox {
+    border: 2px solid black;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+.active {
+    background-color: black;
+}
+
+h1 {
+    font-size: 40px;;
+    
+    // transform: translateY(100px);
+}
+
+.TetrisTitle {
+  transform: translateY(200px) rotate(90deg) ;
+}
+
+.Score {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+//lights-out
+
+.Light {
+
+  cursor: pointer;
+  height: $lightSize;
+  width:  $lightSize;
+  margin: calc($squareMargin/2);
+  border: 1px solid grey;
+
+  // box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.Light:hover {
+  background: grey;
+}
+
+.isOn0 {
+  background: rgb(0, 0, 0);
+
+}
+
+.isOn1 {
+  background: rgb(255, 255, 255);
+
+}
+
+.Board {
+  width: calc(($lightSize) *5);
+  height: calc(($lightSize) * 5);
+  display: grid;
+  grid-template-rows: repeat(5, $lightSize);
+  grid-template-columns: repeat(5, $lightSize);
+  // margin: 10px;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+  border: 2px solid grey;
+  /* border: 4px solid black; */
+}
+
+@keyframes openHome {
+  from{
+    opacity: 0;
+
+  }to {
+    opacity: 1;
+  }
+}
+
+.Home {
+  height: 100vh;
+  width: 50vw;
+  position: relative;
+  animation: openHome 2s ease;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  margin: 30px;
+}
+
+a:hover {
+  color: black;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  top: 45vh;
+  width: 100%;
+}
+
+.MainTitle {
+  position: absolute;
+  top: 20vh;
+  width: 100%;
+  text-align: center;
+  color: white;
+
+  text-shadow: 7px 5px 0px #000000;
+}
+
+.LightsOutTitle {
+  text-align: center;
+}
+
+.LightsOutPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+  
+  .clicks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+ 
+
+  .Clue {
+    position: absolute;
+    bottom: 100px;
+    right: 100px;
+    
+  }
+
+
+
+  .question {
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+  
+  }
+
+ 
+
+  .ClueContainer {
+    cursor: default;
+    background: white;
+    padding: 15px;
+    max-width: 400px;
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    line-height: 20px;
+    -webkit-box-shadow: 13px 9px 0px 4px rgba(0, 0, 0, 1);
+-moz-box-shadow: 13px 9px 0px 4px rgba(0, 0, 0, 1);
+box-shadow: 13px 9px 0px 4px rgba(0, 0, 0, 1);
+  }
+
+  button {
+    border: none;
+    background: none;
+    font-family: 'Press Start 2P', cursive;
+    cursor: pointer;
+  }
+
+  button:hover {
+    color: grey 
+  }
+
+  .GameBoard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }

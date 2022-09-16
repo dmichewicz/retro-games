@@ -1,38 +1,272 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Press Start 2P", cursive;
+  background-image: linear-gradient(135deg, #FFCF71 10%, #2376DD 100%);
+  height: 100vh;
+  border: 20px solid rgb(79, 79, 107);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@-webkit-keyframes openGame {
+  from {
+    transform: translateY(-1000px);
+  }
+  to {
+    transform: translateY(0px);
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@keyframes openGame {
+  from {
+    transform: translateY(-1000px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+.Game {
+  display: flex;
+  justify-content: space-around;
+  width: 700px;
+  border: 2px solid black;
+  background: white;
+  box-shadow: 13px 9px 0px 4px rgb(0, 0, 0);
+  -webkit-animation: openGame 1s ease;
+          animation: openGame 1s ease;
+}
+
+@-webkit-keyframes showBack {
+  from {
+    transform: translateX(-200px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes showBack {
+  from {
+    transform: translateX(-200px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+.back {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  -webkit-animation: showBack 1s ease;
+          animation: showBack 1s ease;
+}
+
+.Square {
+  height: 35px;
+  width: 35px;
+  margin: 0.5px;
+  border: 2px solid rgb(97, 58, 58);
+}
+
+.PreviewSquare {
+  border: none;
+}
+
+.BoardSquares {
+  box-sizing: content-box;
+  width: 385px;
+  margin: 10px;
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(20, 1fr);
+  border: 2px solid rgb(97, 58, 58);
+}
+
+.PreviewSquares {
+  box-sizing: content-box;
+  width: 157.5px;
+  margin: 3px;
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  border: 2px solid rgb(97, 58, 58);
+}
+
+.InfoBox {
+  border: 2px solid black;
+  margin: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.active {
+  background-color: black;
 }
 
-@keyframes App-logo-spin {
+h1 {
+  font-size: 40px;
+}
+
+.TetrisTitle {
+  transform: translateY(200px) rotate(90deg);
+}
+
+.Score {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Light {
+  cursor: pointer;
+  height: 70px;
+  width: 70px;
+  margin: 0.5px;
+  border: 1px solid grey;
+}
+
+.Light:hover {
+  background: grey;
+}
+
+.isOn0 {
+  background: rgb(0, 0, 0);
+}
+
+.isOn1 {
+  background: rgb(255, 255, 255);
+}
+
+.Board {
+  width: 350px;
+  height: 350px;
+  display: grid;
+  grid-template-rows: repeat(5, 70px);
+  grid-template-columns: repeat(5, 70px);
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+  border: 2px solid grey;
+  /* border: 4px solid black; */
+}
+
+@-webkit-keyframes openHome {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
   }
 }
+
+@keyframes openHome {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.Home {
+  height: 100vh;
+  width: 50vw;
+  position: relative;
+  -webkit-animation: openHome 2s ease;
+          animation: openHome 2s ease;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  margin: 30px;
+}
+
+a:hover {
+  color: black;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  top: 45vh;
+  width: 100%;
+}
+
+.MainTitle {
+  position: absolute;
+  top: 20vh;
+  width: 100%;
+  text-align: center;
+  color: white;
+  text-shadow: 7px 5px 0px #000000;
+}
+
+.LightsOutTitle {
+  text-align: center;
+}
+
+.LightsOutPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.clicks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Clue {
+  position: absolute;
+  bottom: 100px;
+  right: 100px;
+}
+
+.question {
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.ClueContainer {
+  cursor: default;
+  background: white;
+  padding: 15px;
+  max-width: 400px;
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  line-height: 20px;
+  box-shadow: 13px 9px 0px 4px rgb(0, 0, 0);
+}
+
+button {
+  border: none;
+  background: none;
+  font-family: "Press Start 2P", cursive;
+  cursor: pointer;
+}
+
+button:hover {
+  color: grey;
+}
+
+.GameBoard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}/*# sourceMappingURL=App.css.map */
